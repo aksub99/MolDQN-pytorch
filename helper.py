@@ -21,38 +21,6 @@ from rdkit.Contrib.SA_Score import sascorer
 import hyp
 
 
-class ReplayMemory(object):
-
-    def __init__(self):
-        self.capacity = hyp.replay_buffer_size
-        self.memory = []
-        self.position = 0
-
-    def push(self, *args):
-        """Saves a transition."""
-        if len(self.memory) < self.capacity:
-            self.memory.append(None)
-        self.memory[self.position] = Result(*args)
-        self.position = (self.position + 1) % self.capacity
-
-    def sample(self, batch_size):
-        return random.sample(self.memory, batch_size)
-
-    def __len__(self):
-        return len(self.memory)
-
-
-class Result(
-    collections.namedtuple('Result', ['state', 'reward', 'terminated'])):
-  """A namedtuple defines the result of a step for the molecule class.
-
-    The namedtuple contains the following fields:
-      state: Chem.RWMol. The molecule reached after taking the action.
-      reward: Float. The reward get after taking the action.
-      terminated: Boolean. Whether this episode is terminated.
-  """
-
-
 def get_valid_actions(state, atom_types, allow_removal, allow_no_modification,
                       allowed_ring_sizes, allow_bonds_between_rings):
   """Computes the set of valid actions for a given state.

@@ -32,6 +32,7 @@ from six.moves import range
 from six.moves import zip
 
 import helper
+import replay_memory
 
 
 class Molecule(object):
@@ -200,7 +201,7 @@ class Molecule(object):
     self._valid_actions = self.get_valid_actions(force_rebuild=True)
     self._counter += 1
 
-    result = helper.Result(
+    result = replay_memory.Result(
         state=self._state,
         reward=self._reward(),
         terminated=(self._counter >= self.max_steps) or self._goal_reached())
