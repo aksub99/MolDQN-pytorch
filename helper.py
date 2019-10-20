@@ -1,20 +1,4 @@
-# coding=utf-8
-# Copyright 2019 The Google Research Authors.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# Lint as: python2, python3
-"""Tools for manipulating graphs and converting from atom and pair features."""
+"""Helper functions"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -24,7 +8,9 @@ import numpy as np
 import collections
 import copy
 import itertools
+import random
 
+from collections import deque
 from rdkit import Chem
 from rdkit import DataStructs
 from rdkit.Chem import AllChem
@@ -33,6 +19,27 @@ from rdkit.Chem.Scaffolds import MurckoScaffold
 from rdkit.Contrib.SA_Score import sascorer
 
 import hyp
+
+
+class ReplayMemory(object):
+
+    def __init__(self):
+        self.capacity = hyp.replay_buffer_size
+        self.memory = []
+        self.position = 0
+
+    def push(self, *args):
+        """Saves a transition."""
+        if len(self.memory) < self.capacity:
+            self.memory.append(None)
+        self.memory[self.position] = Result(*args)
+        self.position = (self.position + 1) % self.capacity
+
+    def sample(self, batch_size):
+        return random.sample(self.memory, batch_size)
+
+    def __len__(self):
+        return len(self.memory)
 
 
 class Result(
