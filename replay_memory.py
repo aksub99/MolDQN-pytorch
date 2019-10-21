@@ -19,14 +19,16 @@ class ReplayMemory(object):
 
     def __init__(self):
         self.max_size = hyp.replay_buffer_size
-        self.memory = deque(maxlen=hyp.replay_buffer_size)
+        self.memory = deque([],maxlen=hyp.replay_buffer_size)
 
-    def push(self, *args):
+    def push(self, x):
         """Saves a Result"""
-        self.memory.append(Result)
+        self.memory.append(x)
 
     def sample(self, batch_size):
-        return random.sample(self.memory, batch_size)
+        batch = random.sample(self.memory, batch_size)
+        (state_t, reward_t, state_tp1, done_mask) = map(np.stack, zip(*batch))
+        return state_t, reward_t, state_tp1, done_mask
 
     def __len__(self):
         return len(self.memory)
