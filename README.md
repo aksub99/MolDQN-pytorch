@@ -1,2 +1,2 @@
 # MolDQN-pytorch
-A PyTorch Implementation of "Optimization of Molecules via Deep Reinforcement Learning".
+A PyTorch implementation of "Optimization of Molecules via Deep Reinforcement Learning".
