@@ -10,16 +10,17 @@ by Zhenpeng Zhou, Steven Kearnes, Li Li, Richard N. Zare and Patrick Riley.
 
 ## From source:
 
-1) Clone this repository.  
-   `git clone https://github.com/aksub99/MolDQN-pytorch.git`.  
-   
-2) Install the requirements given in `requirements.txt`.  
-   `pip install -r requirements.txt`  
-   
-3) Install `baselines`.  
-   `pip install "git+https://github.com/openai/baselines.git@master#egg=baselines-0.1.6"`  
-   
-4) Install `rdkit`.  
+1) Install `rdkit`.  
    `conda create -c rdkit -n my-rdkit-env rdkit`  
    `conda activate my-rdkit-env`  
    `conda install -c conda-forge rdkit`  
+   
+2) Clone this repository.  
+   `git clone https://github.com/aksub99/MolDQN-pytorch.git`.  
+   
+3) Install the requirements given in `requirements.txt`.  
+   `pip install -r requirements.txt`  
+   
+4) Install `baselines`.  
+   `pip install "git+https://github.com/openai/baselines.git@master#egg=baselines-0.1.6"`  
+   
