@@ -1,0 +1,4 @@
+six==1.14.0
+numpy==1.18.1
+tensorflow-gpu==1.14
+torch==1.4.0
