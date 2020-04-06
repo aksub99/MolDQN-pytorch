@@ -45,19 +45,18 @@ class QEDRewardMolecule(Molecule):
 
 
 class Agent(object):
-    def __init__(self, environment, input_length, output_length, device):
+    def __init__(self, input_length, output_length, device):
         self.device = device
         self.dqn, self.target_dqn = (
             MolDQN(input_length, output_length).to(self.device),
             MolDQN(input_length, output_length).to(self.device),
         )
-        self.environment = environment
-        self.memory_counter = 0
+        for p in self.target_dqn.parameters():
+            p.requires_grad = False
         self.replay_buffer = replay_buffer.ReplayBuffer(REPLAY_BUFFER_CAPACITY)
         self.optimizer = getattr(opt, hyp.optimizer)(
             self.dqn.parameters(), lr=hyp.learning_rate
         )
-        self.loss_fn = nn.MSELoss()
 
     def get_action(self, observations, epsilon_threshold):
 

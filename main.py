@@ -35,7 +35,7 @@ environment = QEDRewardMolecule(
 # input: appended action (fingerprint_length + 1) .
 # Output size is (1).
 
-agent = Agent(environment, hyp.fingerprint_length + 1, 1, device)
+agent = Agent(hyp.fingerprint_length + 1, 1, device)
 
 if TENSORBOARD_LOG:
     writer = SummaryWriter(TB_LOG_PATH)
