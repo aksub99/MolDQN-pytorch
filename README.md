@@ -41,6 +41,8 @@ nvidia-docker run -[Options] MolDQN_pytorch:latest python path/to/main.py
 
 `python main.py`
 
+A simple example to train the model on a single property optimization task can be seen in `examples/MolDQN-pytorch.ipynb`.
+
 ## Results:
 
 The following was the reward curve obtained when the model was trained for 5000 episodes on a single property optimization task (QED in this case).
