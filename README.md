@@ -31,10 +31,11 @@ Using a docker image requires an NVIDIA GPU.  If you do not have a GPU please fo
 In order to get GPU support you will have to use the [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) plugin.
 ``` bash
 # Build the Dockerfile in Dockerfiles/Dockerfile to create a Docker image.
-docker build -t MolDQN_pytorch:latest Dockerfile .
+cd Dockerfiles
+docker build -t moldqn_pytorch:latest .
 
 # This will create a container from the image we just created.
-nvidia-docker run -[Options] MolDQN_pytorch:latest python path/to/main.py
+nvidia-docker run -[Options] moldqn_pytorch:latest python path/to/main.py
 ```
 
 ## Training the MolDQN:
