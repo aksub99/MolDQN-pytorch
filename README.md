@@ -37,7 +37,7 @@ docker build -t moldqn_pytorch:latest .
 # This will create a container from the image we just created.
 nvidia-docker run -[Options] moldqn_pytorch:latest python path/to/main.py
 ```
-
+Please remember to modify the `TB_LOG_PATH` variable in `main.py` depending on where you wish to store your tensorboard runs file.
 ## Training the MolDQN:
 
 `python main.py`
