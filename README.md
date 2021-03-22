@@ -23,7 +23,7 @@ by Zhenpeng Zhou, Steven Kearnes, Li Li, Richard N. Zare and Patrick Riley.
    `pip install -r requirements.txt`  
    
 4) Install `baselines`.  
-   `pip install "git+https://github.com/openai/baselines.git@master#egg=baselines-0.1.6"`  
+   `pip install "git+https://github.com/openai/baselines.git"`  
    
 ## From Docker:
 
