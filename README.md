@@ -49,3 +49,7 @@ A simple example to train the model on a single property optimization task can b
 The following was the reward curve obtained when the model was trained for 5000 episodes on a single property optimization task (QED in this case).
 
 <img src="https://github.com/aksub99/MolDQN-pytorch/blob/master/Results/plots/episode_reward.svg" height="500" width="500">
+
+## References:
+The original tensorflow implementation can be found at https://github.com/google-research/google-research/tree/master/mol_dqn
+This repository re-uses some code from the original implementation.
