@@ -1,4 +1,4 @@
 six==1.14.0
 numpy==1.18.1
-tensorflow==1.14
+tensorflow==2.11.1
 torch==1.4.0
